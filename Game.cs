@@ -57,5 +57,10 @@ namespace TicTacToe
 
             return false;
         }
+
+        public bool IsDraw(Board board)
+        {
+            return !board.TheBoard.Contains(null);
+        }
     }
 }
