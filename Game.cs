@@ -40,7 +40,7 @@ namespace TicTacToe
              *              return false
              *   finish
              */
-            //int[] test = new int[] { 7, 4, 6 };
+            //int[] test = new int[] { 7, 4, 6, 5 };
 
             for (int i = 0; i < WinConditions.GetLength(0); i++)
             {
@@ -49,7 +49,7 @@ namespace TicTacToe
 
                 var check = block.Except(player.Choices);
                 Console.WriteLine(check);
-                if (check.Count() == 0)
+                if (!check.Any())
                     return true;
                 else
                     continue;
