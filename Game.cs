@@ -59,5 +59,22 @@ namespace TicTacToe
         {
             return !board.TheBoard.Contains(null);
         }
+
+        // insert the value on players choices array
+        // Since players choices is an array that is initially a bunch of zeros, we loop through the array and fill the next zero found.
+        public void MakePlay(Player player, int choice, Board board)
+        {
+            board.TheBoard[choice - 1] = player.Piece;
+
+            for (int i = 0; i < player.Choices.Length; i++)
+            {
+                if (player.Choices[i] == 0)
+                {
+                    player.Choices[i] = choice;
+                    break;
+                }
+
+            }
+        }
     }
 }
