@@ -8,19 +8,18 @@ namespace TicTacToe
 {
     internal class Game
     {
-        public int[,] WinConditions = new int[7, 3] { 
-            { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 1, 5, 9 }, { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 } 
+        public int[,] WinConditions = new int[8, 3] { 
+            { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 1, 5, 9 }, { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 }, { 3, 5, 7 } 
         };
 
-        public Game()
-        {
-            Player[] players = { 
-                new() { Id = 1, Name = "Gabriel", Piece = "O" }, 
-                new() { Id = 2, Name = "Mathias", Piece = "X" } 
-            };
+        private Player[] players;
 
-            Board board = new();
+        public Game(Player[] players)
+        {
+            this.players = players;
         }
+        public Player[] Players { get { return players; } }
+
         /// <summary>
         /// Checks if player has won after choosing a position for its piece
         /// </summary>
@@ -45,10 +44,8 @@ namespace TicTacToe
             for (int i = 0; i < WinConditions.GetLength(0); i++)
             {
                 int[] block = new int[] { WinConditions[i, 0], WinConditions[i, 1], WinConditions[i, 2] };
-                Console.WriteLine("{0}, {1}, {2}", block[0], block[1], block[2]);
 
                 var check = block.Except(player.Choices);
-                Console.WriteLine(check);
                 if (!check.Any())
                     return true;
                 else

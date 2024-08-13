@@ -8,9 +8,16 @@ namespace TicTacToe
 {
     internal class Player
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = "Jack";
-        public string Piece { get; set; } = "O";
-        public int[] Choices { get; set; } = new int[5];
+        public string Name { get; set; }
+        public string Piece { get; set; }
+        public int[] Choices { get; set; }
+
+        public Player(string name, string piece) {
+            this.Name = name;
+            this.Piece = piece;
+            this.Choices = new int[5];
+        }
+
+        
     }
 }
