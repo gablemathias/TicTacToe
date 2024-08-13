@@ -76,5 +76,12 @@ namespace TicTacToe
 
             }
         }
+
+        public Player NewTurn(Player player)
+        {
+            player = player.Piece == "O" ? this.Players[1] : this.Players[0];
+            Console.WriteLine("Now it is your turn {0}!", player.Name);
+            return player;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace TicTacToe
+﻿using System.Numerics;
+
+namespace TicTacToe
 {
     internal class Program
     {
@@ -17,8 +19,8 @@
 
             while (true) 
             {
-                // Check if it's a valid play:
-                // Valid plays are between 1 and 9, integers and weren't chosen before. 
+                // Check if valid play:
+                // Valid plays are between 1 and 9, integers and haven't been chosen yet. 
                 
                 Console.WriteLine("Choose a valid position from 1 to 9 (keyboard orientation) to play");
                 string strChoice = Console.ReadLine();
@@ -30,7 +32,7 @@
                 
                 Console.WriteLine(board.VisualBoard());
 
-                // Check if player is the Winner to finish the game OR if it is a draw
+                // Check if player is Winner, Draw or New Turn
                 if (game.IsWinner(actualPlayer))
                 {
                     Console.WriteLine("Congratulations {0}, you are the Winner!", actualPlayer.Name);
@@ -41,10 +43,9 @@
                     Console.WriteLine("Aww that's sad, it's a cat. Maybe next time.");
                     break;
                 }
-                else // If none of them, change the player (new turn);
+                else
                 {
-                    actualPlayer = actualPlayer.Piece == "O" ? game.Players[1] : game.Players[0]; 
-                    Console.WriteLine("Now it is your turn {0}!", actualPlayer.Name);
+                    actualPlayer = game.NewTurn(actualPlayer);
                 }
             }
         }
